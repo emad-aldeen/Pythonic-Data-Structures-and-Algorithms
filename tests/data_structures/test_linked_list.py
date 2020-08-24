@@ -83,3 +83,34 @@ def test_delete_node():
     assert ll.toString() == '{2} -> {3} -> {6} -> {9} -> NULL'
     ll.delete_node(2)
     assert ll.toString() == '{3} -> {6} -> {9} -> NULL'
+
+
+def test_kthFromEnd():
+    current = ll.head
+    length = 0
+    while current:
+        length += 1
+        current = current.next
+    ll.kthFromEnd(6)
+    assert 6 > length
+
+
+def test_kthFromEnd2():
+    current = ll.head
+    length = 0
+    while current:
+        length += 1
+        current = current.next
+    ll.kthFromEnd(3)
+    assert 3 == length
+
+
+def test_kthFromEnd3():
+    assert ll.kthFromEnd(-3) == None
+
+
+def test_kthFromEnd4():
+    ll.delete_node(3)
+    ll.delete_node(6)
+    assert ll.kthFromEnd(0) == 9
+

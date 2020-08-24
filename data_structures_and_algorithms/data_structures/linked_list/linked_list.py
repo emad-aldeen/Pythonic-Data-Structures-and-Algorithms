@@ -184,6 +184,30 @@ class LinkedList():
                 current = current.next
 
 
+    def kthFromEnd(self, k):
+        '''
+        it will reteruen you the index of your value by starting from the end to first of linked list...
+            input ---> value of index you want search the value of
+            output >> th value you matching your index
+            * it will rise an erorr if value wasent correct..
+        '''
+        try:  
+            n = -1
+            current = self.head
+            while current:
+                current = current.next
+                n = n + 1
+            if n >= k:
+                current = self.head
+                for i in range(n - k):
+                    current = current.next
+
+            return current.value
+        except Exception as error:
+            print(f'the error is {error}')
+
+
+
 if __name__ == '__main__':
     mainll = LinkedList()
     mainll.insert(3)
@@ -208,3 +232,6 @@ if __name__ == '__main__':
 
     print(mainll.delete_node(3))
     print(mainll.toString())
+
+    print(mainll.kthFromEnd(3))
+    mainll.kthFromEnd(-3)
