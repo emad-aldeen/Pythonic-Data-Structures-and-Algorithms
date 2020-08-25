@@ -22,6 +22,7 @@ class LinkedList():
     def __init__(self):
         self.head = None
     
+
     def insert(self, value=None):
         '''
         insert new node to linked list:
@@ -41,6 +42,7 @@ class LinkedList():
                     current = current.next
 
                 current.next = new_node
+
 
     def includes(self, value=None):
         '''
@@ -121,23 +123,6 @@ class LinkedList():
 
             return "this node is not exist!"
 
-            # while True:
-            #     try:
-            #         current.next.value
-            #     except AttributeError:
-            #         return "this node is not exist!"
-            #     else:
-            #         if current.next.value != value:
-            #             current = current.next
-            #             continue
-            #     break
-
-            # old_node = current.next
-            # current.next = new_node
-            # new_node.next = old_node
-            # return f'secssfuly added "{newVal}" to the linked list..'
-
-
 
     def insertAfter(self, value, newVal):
         '''
@@ -153,16 +138,18 @@ class LinkedList():
                 self.head = new_node
         else:
             current = self.head
-            while current.next != None:
-                if current.next.value == value:
-                    current = current.next
-                    old_node = current.next
-                    current.next = new_node
-                    new_node.next = old_node
-                    return f'secssfuly added "{newVal}" to the linked list..'
+            while current:
+                if current.next != None:
+                    if current.value == value:
+                        o = current.next
+                        current.next = new_node
+                        new_node.next = o
+                        return f'secssfuly added "{newVal}" to the linked list..'
+                    else:
+                        current = current.next
                 else:
-                    current = current.next
-                    
+                    current.next = new_node
+                    return f'secssfuly added "{newVal}" to the linked list..'
             return "this node is not exist!"
 
     
@@ -207,14 +194,86 @@ class LinkedList():
             print(f'the error is {error}')
 
 
+    @staticmethod  
+    def zipLists(list1,list2):
+        nodes_counter_li1 = 0
+        nodes_counter_li2 = 0
+
+        current = list1.head
+        while current != None:
+            current = current.next
+            nodes_counter_li1 += 1
+
+        current = list2.head
+        while current != None:
+            current = current.next
+            nodes_counter_li2 = nodes_counter_li2 + 1 
+
+        if nodes_counter_li1 > nodes_counter_li2:
+            l1 = list1
+            l2 = list2
+        else:
+            l1 = list2
+            l2 = list1
+
+        current = l1.head 
+        l2_current = l2.head 
+        while current != None and l2_current != None: 
+            l1_next = current.next
+            l2_next = l2_current.next
+            l2_current.next = l1_next 
+            current.next = l2_current 
+            current = l1_next 
+            l2_current = l2_next 
+        l2.head = l2_current 
+        return l1.toString()
+
+
+    # @staticmethod
+    # def merge(list1, list2):
+    #     current = list1.head
+    #     # les = current.next
+    #     current2 = list2.head
+
+    #     while True:
+
+    #         if current.value < current2.value:
+    #             list1.insertAfter(current.value, current2.value)
+    #             try:
+    #                 current2 = current2.next.value
+    #                 current.next.value
+    #             except:
+    #                 break
+    #             else:
+    #                 o = current.next
+    #                 current = o.next
+    #                 current2 = current2.next
+
+    #         elif current.value >= current2.value:
+    #             list1.insertBefore(current.value, current2.value)
+    #             try:
+    #                 current2 = current2.next.value
+    #                 current.next.value
+    #             except:
+    #                 break
+    #             else:
+    #                 current = current.next
+    #                 current2 = current2.next
+    #     return list1.toString()
+
+                
+
+
+
+
 
 if __name__ == '__main__':
     mainll = LinkedList()
     mainll.insert(3)
     mainll.insert(6)
     mainll.insert(9)
-    print(mainll.includes(5))
-    print(mainll.toString())
+    # print(mainll.includes(5))
+    # print(mainll.toString())
     empty = LinkedList()
     print(empty.toString())
     print(mainll.head.value)
@@ -235,3 +294,20 @@ if __name__ == '__main__':
 
     print(mainll.kthFromEnd(3))
     mainll.kthFromEnd(-3)
+
+    # from here it looks: {2} -> {4} -> {6} -> {1} -> {9} -> NULL 
+    print(mainll.delete_node(2))
+    print(mainll.delete_node(4))
+    print(mainll.delete_node(4))
+    print(mainll.delete_node(1))
+    print(mainll.insertBefore(6, 3))
+    print(mainll.toString())
+    empty.insert(2)
+    empty.insert(4)
+    empty.insert(10)
+    print(empty.toString())
+    # it now normal: {3} -> {6} -> {9} -> NULL
+    print('')
+
+
+
