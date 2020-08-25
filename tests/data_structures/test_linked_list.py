@@ -3,11 +3,11 @@ from data_structures_and_algorithms.data_structures.linked_list.linked_list impo
 )
 import pytest
 
-
 ll = LinkedList()
 ll.insert(3)
 ll.insert(6)
 ll.insert(9)
+
 
 def test_instance():
     assert isinstance(ll, LinkedList)
@@ -80,9 +80,9 @@ def test_delete_node():
     ll.delete_node(11)
     ll.delete_node(10)
     ll.delete_node(5)
-    assert ll.toString() == '{2} -> {3} -> {6} -> {9} -> NULL'
+    assert ll.toString() == '{2} -> {3} -> {6} -> {9} -> {10} -> NULL'
     ll.delete_node(2)
-    assert ll.toString() == '{3} -> {6} -> {9} -> NULL'
+    assert ll.toString() == '{3} -> {6} -> {9} -> {10} -> NULL'
 
 
 def test_kthFromEnd():
@@ -102,7 +102,7 @@ def test_kthFromEnd2():
         length += 1
         current = current.next
     ll.kthFromEnd(3)
-    assert 3 == length
+    assert 4 == length
 
 
 def test_kthFromEnd3():
@@ -112,5 +112,16 @@ def test_kthFromEnd3():
 def test_kthFromEnd4():
     ll.delete_node(3)
     ll.delete_node(6)
-    assert ll.kthFromEnd(0) == 9
+    assert ll.kthFromEnd(0) == 10
 
+
+def test_zipLists():
+    new_list = LinkedList() 
+    new_list.insert(3) 
+    new_list.insert(2) 
+    new_list.insert(1) 
+    new_list2 = LinkedList() 
+    new_list2.insert(8) 
+    new_list2.insert(7) 
+    new_list2.insert(6)
+    assert new_list.zipLists(new_list,new_list2) == "{8} -> {3} -> {7} -> {2} -> {6} -> {1} -> NULL"
