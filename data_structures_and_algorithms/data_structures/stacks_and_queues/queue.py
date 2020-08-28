@@ -15,6 +15,19 @@ class Queue():
             self.rear = new_node
             temp.next = new_node
 
+
+    def dequeue(self):
+        try:
+            self.front.value
+        except AttributeError:
+            return "this queue is empty!!"
+        else:
+            temp = self.front
+            temp2 = temp.next
+            self.front = temp2
+            return temp.value
+
+
 if __name__ == '__main__':
     queue = Queue()
     queue.enqueue(5)
@@ -23,3 +36,5 @@ if __name__ == '__main__':
     # print(queue.rear.value)
     queue.enqueue(9)
     print(queue.rear.value)
+    print (queue.dequeue())
+    print(queue.front.value)

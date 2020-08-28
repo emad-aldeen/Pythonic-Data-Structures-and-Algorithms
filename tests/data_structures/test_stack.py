@@ -1,4 +1,4 @@
-from data_structures_and_algorithms.data_structures.stacks_and_queues.stacks_and_queues import (Stack)
+from data_structures_and_algorithms.data_structures.stacks_and_queues.stack import (Stack)
 
 def test_push():
     stack = Stack()
