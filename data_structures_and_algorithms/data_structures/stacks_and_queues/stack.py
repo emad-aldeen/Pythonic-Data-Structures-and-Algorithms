@@ -1,8 +1,4 @@
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
+from data_structures_and_algorithms.data_structures.stacks_and_queues.node import Node
 
 class Stack:
     def __init__(self):
