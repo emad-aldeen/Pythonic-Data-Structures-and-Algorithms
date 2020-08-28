@@ -35,6 +35,13 @@ class Stack:
             return "stack is empty!"
 
 
+    def is_empty(self):
+        if self.top:
+            return False
+        else:
+            return True
+
+
 if __name__ == '__main__':
     stack = Stack()
     stack.push(7)
@@ -48,3 +55,6 @@ if __name__ == '__main__':
     print(not_stack.pop())
     print (stack.peek())
     print (not_stack.peek())
+
+    print (stack.is_empty())
+    print (not_stack.is_empty())
