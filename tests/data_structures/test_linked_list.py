@@ -114,14 +114,3 @@ def test_kthFromEnd4():
     ll.delete_node(6)
     assert ll.kthFromEnd(0) == 10
 
-
-def test_zipLists():
-    new_list = LinkedList() 
-    new_list.insert(3) 
-    new_list.insert(2) 
-    new_list.insert(1) 
-    new_list2 = LinkedList() 
-    new_list2.insert(8) 
-    new_list2.insert(7) 
-    new_list2.insert(6)
-    assert new_list.zipLists(new_list,new_list2) == "{8} -> {3} -> {7} -> {2} -> {6} -> {1} -> NULL"
