@@ -26,3 +26,13 @@ def test_dequeue():
     assert queue.front.value == 9
 
 
+def test_peek():
+    queue = Queue()
+    queue.enqueue(5)
+    queue.enqueue(7)
+    queue.enqueue(9)
+    assert queue.peek() == 5
+    not_queue = Queue()
+    assert not_queue.peek() == 'this queue is empty!!'
+
+

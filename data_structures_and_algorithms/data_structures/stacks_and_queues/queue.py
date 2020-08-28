@@ -27,6 +27,12 @@ class Queue():
             self.front = temp2
             return temp.value
 
+    def peek(self):
+        try:
+            return self.front.value
+        except AttributeError:
+            return "this queue is empty!!"
+
 
 if __name__ == '__main__':
     queue = Queue()
@@ -38,3 +44,6 @@ if __name__ == '__main__':
     print(queue.rear.value)
     print (queue.dequeue())
     print(queue.front.value)
+    print (queue.peek())
+    not_queue = Queue()
+    print(not_queue.peek())
