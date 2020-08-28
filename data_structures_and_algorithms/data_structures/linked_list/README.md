@@ -27,4 +27,7 @@ use:
 - name.insert(vlaue) // it will insert the head then continue the linked list...
 - name.include(vlaue) // it will search inside the linked list for your value & retruns boolen..
 - name.tostring() // it will retruns the linked list nodes by specifec format '{ a } -> { b } -> NULL'
+- name.append(value) // it will append your new node to the linked list
+- name.insertBefore(value, newVal) // it will insert the new value before the first one..
+- name.insertAfter(value, newVal) // it will insert the new value after the first one..
 
