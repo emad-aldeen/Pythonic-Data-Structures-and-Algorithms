@@ -17,7 +17,18 @@ class Stack:
             new_node.next = temp
             self.top = new_node
 
+    def pop(self):
+        try:
+            self.top.value
+        except AttributeError:
+            return "stack is empty!"
+        else:
+            result = self.top.value
+            temp = self.top.next
+            self.top = temp
+            return result
 
+    
 
 if __name__ == '__main__':
     stack = Stack()
@@ -26,3 +37,7 @@ if __name__ == '__main__':
     stack.push(12)
     print (stack.top.value)
     print (stack.top.next.value)
+    stack.pop()
+    print (stack.top.value)
+    not_stack = Stack()
+    print(not_stack.pop())
