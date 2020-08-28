@@ -30,4 +30,14 @@ use:
 - name.append(value) // it will append your new node to the linked list
 - name.insertBefore(value, newVal) // it will insert the new value before the first one..
 - name.insertAfter(value, newVal) // it will insert the new value after the first one..
+- name.kthFromEnd(k) // it returns the node’s value that is 'k' from the end of the linked list..
+
+<br>
+<hr>
+
+## Whiteboards
+
+**kthFromEnd()**:
+
+![cap2](../assets/cc_class07.png)
 
