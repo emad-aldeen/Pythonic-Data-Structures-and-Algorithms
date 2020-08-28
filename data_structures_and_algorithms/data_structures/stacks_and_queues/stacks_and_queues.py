@@ -28,7 +28,12 @@ class Stack:
             self.top = temp
             return result
 
-    
+    def peek(self):
+        try:
+            return self.top.value
+        except AttributeError:
+            return "stack is empty!"
+
 
 if __name__ == '__main__':
     stack = Stack()
@@ -41,3 +46,5 @@ if __name__ == '__main__':
     print (stack.top.value)
     not_stack = Stack()
     print(not_stack.pop())
+    print (stack.peek())
+    print (not_stack.peek())
