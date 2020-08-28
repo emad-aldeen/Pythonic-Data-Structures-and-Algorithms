@@ -36,3 +36,13 @@ def test_peek():
     assert not_queue.peek() == 'this queue is empty!!'
 
 
+def test_is_empty():
+    queue = Queue()
+    queue.enqueue(5)
+    queue.enqueue(7)
+    queue.enqueue(9)
+    assert queue.isEmpty() == False
+    not_queue = Queue()
+    assert not_queue.isEmpty() == True
+
+

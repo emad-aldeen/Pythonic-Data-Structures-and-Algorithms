@@ -34,6 +34,14 @@ class Queue():
             return "this queue is empty!!"
 
 
+    def isEmpty(self):
+        if self.front == None and self.rear == None:
+            return True
+        else:
+            return False
+ 
+
+
 if __name__ == '__main__':
     queue = Queue()
     queue.enqueue(5)
@@ -47,3 +55,5 @@ if __name__ == '__main__':
     print (queue.peek())
     not_queue = Queue()
     print(not_queue.peek())
+    print(queue.isEmpty())
+    print(not_queue.isEmpty())
