@@ -5,6 +5,10 @@ class Stack:
         self.top = None
     
     def push(self, value):
+        '''
+        used to add nodes to top of the stack:
+            input ---> value to create node from it then add to the top of the stack..
+        '''
         new_node = Node(value)
         if self.top == None:
             self.top = new_node
@@ -14,6 +18,9 @@ class Stack:
             self.top = new_node
 
     def pop(self):
+        '''
+        it only pop the first node in the top of the stack..
+        '''
         try:
             self.top.value
         except AttributeError:
@@ -25,6 +32,10 @@ class Stack:
             return result
 
     def peek(self):
+        '''
+        return the first node value of the top of the stack:
+            output >> the top value of the stack
+        '''
         try:
             return self.top.value
         except AttributeError:
@@ -32,10 +43,19 @@ class Stack:
 
 
     def is_empty(self):
+        '''
+        cheak if the stack is empty or not:
+            output >> boleen
+        '''
         if self.top:
             return False
         else:
             return True
+
+
+
+
+
 
 
 if __name__ == '__main__':

@@ -6,6 +6,10 @@ class Queue():
         self.rear = None
 
     def enqueue(self, value):
+        '''
+        used to add nodes to rear of the queue:
+            input ---> value to create node from it then add to the queue..
+        '''
         new_node = Node(value)
         if self.front == None and self.rear == None:
             self.front = new_node
@@ -17,6 +21,9 @@ class Queue():
 
 
     def dequeue(self):
+        '''
+        it only pop the first node in the front of the queue..
+        '''
         try:
             self.front.value
         except AttributeError:
@@ -28,6 +35,10 @@ class Queue():
             return temp.value
 
     def peek(self):
+        '''
+        return the first node value of the front of the queue:
+            output >> the front value of the queue
+        '''
         try:
             return self.front.value
         except AttributeError:
@@ -35,11 +46,17 @@ class Queue():
 
 
     def isEmpty(self):
+        '''
+        cheak if the queue is empty or not:
+            output >> boleen
+        '''
         if self.front == None and self.rear == None:
             return True
         else:
             return False
  
+
+
 
 
 if __name__ == '__main__':
