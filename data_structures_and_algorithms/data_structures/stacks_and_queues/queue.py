@@ -5,19 +5,20 @@ class Queue():
         self.front = None
         self.rear = None
 
-    def enqueue(self, value):
+    def enqueue(self, *value):
         '''
         used to add nodes to rear of the queue:
             input ---> value to create node from it then add to the queue..
         '''
-        new_node = Node(value)
-        if self.front == None and self.rear == None:
-            self.front = new_node
-            self.rear = new_node
-        else:
-            temp = self.rear
-            self.rear = new_node
-            temp.next = new_node
+        for i in value:
+            new_node = Node(i)
+            if self.front == None and self.rear == None:
+                self.front = new_node
+                self.rear = new_node
+            else:
+                temp = self.rear
+                self.rear = new_node
+                temp.next = new_node
 
 
     def dequeue(self):
