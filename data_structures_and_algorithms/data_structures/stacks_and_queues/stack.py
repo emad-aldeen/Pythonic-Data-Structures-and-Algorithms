@@ -4,18 +4,19 @@ class Stack:
     def __init__(self):
         self.top = None
     
-    def push(self, value):
+    def push(self, *value):
         '''
         used to add nodes to top of the stack:
             input ---> value to create node from it then add to the top of the stack..
         '''
-        new_node = Node(value)
-        if self.top == None:
-            self.top = new_node
-        else:
-            temp = self.top
-            new_node.next = temp
-            self.top = new_node
+        for i in value:
+            new_node = Node(i)
+            if self.top == None:
+                self.top = new_node
+            else:
+                temp = self.top
+                new_node.next = temp
+                self.top = new_node
 
     def pop(self):
         '''
