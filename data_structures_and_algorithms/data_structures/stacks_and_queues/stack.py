@@ -53,6 +53,14 @@ class Stack:
         else:
             return True
 
+    def __str__(self):
+        result = ''
+        current = self.top
+        while current:
+            result += f"{{{current.value}}} -> "
+            current = current.next
+        print(result)
+
 
 
 
