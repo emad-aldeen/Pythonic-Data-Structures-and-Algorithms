@@ -17,3 +17,5 @@ no mater how data you had..or even in worst case it is!!
 <br>
 
 ## Solution
+
+![cap](../assets/cc_class11Wh.png)
