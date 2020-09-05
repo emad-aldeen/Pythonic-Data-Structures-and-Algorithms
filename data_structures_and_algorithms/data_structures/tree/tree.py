@@ -1,5 +1,4 @@
 class _Node:
-    """Private class to create a nodes for the tree"""
     def __init__(self, value):
         self.value = value
         self.left = None
@@ -8,25 +7,24 @@ class _Node:
 
 
 class Queue:
-    """class Queue which implements Queue data structure with its common methods"""
-
     def __init__(self):
-        """Initiate class"""
-
         self.front = None
         self.rear = None
 
     def is_empty(self):
-        """method to check if Queue is empty"""
-
+        """
+        method to check if Queue is empty
+        """
         if self.front == None:
             return True
         return False
 
 
     def enqueue(self, node):
-        """Method that takes any value as an argument and adds a new node with that value to the back of the queue """
-
+        """
+        Method that takes any value as an argument and adds a new node with that value to the back of the queue:
+            inp ---> value
+        """
         new_node = node
 
         if self.is_empty():
@@ -37,8 +35,10 @@ class Queue:
             self.rear = new_node
 
     def dequeue(self):
-        """Method that removes the node from the front of the queue, and returns the node’s value."""
-
+        """
+        Method that removes the node from the front of the queue, and returns the node’s value:
+            out >> the dequeueed value
+        """
         if not self.is_empty():
             temp = self.front
             self.front = self.front.next
@@ -48,21 +48,24 @@ class Queue:
             return None
 
     def peek(self):
-        """Method that returns the value of the node located in the front of the queue, without removing it from the queue."""
-
+        """
+        Method that returns the value of the node located in the front of the queue, without removing it from the queue:
+            out >> the front value
+        """
         if not self.is_empty():
             return self.front.value
         return None
 
 
 class BinaryTree:
-    """Class to create a binary tree"""
     def __init__(self):
         self._root = None
 
     def pre_order(self, node=None, arr = None):
-        """Method to return an array of trre values in "pre-order" order"""
-
+        """
+        Method to return an array of trre values in "pre-order" order:
+            out >> list contain tree values in pre-order..
+        """
         if arr is None:
             arr = []
 
@@ -79,7 +82,10 @@ class BinaryTree:
         return arr
 
     def in_order(self, node=None, arr = None):
-        """Method to return an array of tree values "in-order" """
+        """
+        Method to return an array of tree values "in-order" :
+            out >> list contain tree values in-order..
+        """
         if arr is None:
             arr = []
 
@@ -96,8 +102,10 @@ class BinaryTree:
         return arr
 
     def post_order(self, node=None, arr = []):
-        """Method to return an array of tree values "post-order" """
-
+        """
+        Method to return an array of tree values "post-order":
+            out >> list of tree values in post-order..
+        """
         node = node or self._root
 
         if node.left:
@@ -110,34 +118,13 @@ class BinaryTree:
 
         return arr
 
-    @staticmethod
-    def breadth_first(tree, node = None, array = None):
-        """ A static method which takes a Binary Tree as its unique input, traversing the input tree using a Breadth-first approach, and returns a list of the values in the tree in the order they were encountered."""
-
-        q = Queue()
-        if array is None:
-            array = []
-        if tree._root:
-            q.enqueue(tree._root)
-
-        while q.peek():
-            node_front = q.dequeue()
-            array.append(node_front.value)
-
-            if node_front.left:
-                q.enqueue(node_front.left)
-            if node_front.right:
-                q.enqueue(node_front.right)
-
-        return array
-
-
+    
 class BinarySearchTree(BinaryTree):
-    """Class to create a Binary Search Tree """
-
     def add(self, value):
-        """Method that accepts a value, and adds a new node with that value in the correct location in the binary search tree"""
-
+        """
+        Method that accepts a value, and adds a new node with that value in the correct location in the binary search tree:
+            inp ---> value to be added to binry search tree
+        """
         node = _Node(value)
         if not self._root:
             self._root = node
@@ -160,10 +147,14 @@ class BinarySearchTree(BinaryTree):
 
 
     def contains(self,value):
-        """Method that accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once."""
-
+        """
+        lets cheack if you value is in the tree.. :)
+        this method that accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once:
+            inp ---> value to cheack if it is in the tree
+            out >> boolean if the value in or not..
+        """
         if self._root == None:
-            raise myException("Tree is empty")
+            raise "Tree is empty"
 
         current = self._root
         while current:
@@ -174,7 +165,4 @@ class BinarySearchTree(BinaryTree):
             else:
                 current = current.right
         return False
-
-class myException(Exception):
-    pass
 

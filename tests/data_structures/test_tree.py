@@ -98,31 +98,5 @@ def test_post_order(my_bst):
     assert my_bst.post_order() == [5, 8, 7, 13, 11, 17, 23, 19, 15]
 
 
-def test_breadth_first_binarysearch(my_bst):
-   assert BinaryTree.breadth_first(my_bst) == [15, 11, 19, 7, 13, 17, 23, 5, 8]
-
-def test_breadth_first_binarytree_empty():
-    tree = BinaryTree()
-    assert BinaryTree.breadth_first(tree) == []
-
-def test_breadth_first_binarytree_one_element():
-    tree = BinaryTree()
-    tree._root = _Node(8)
-    assert BinaryTree.breadth_first(tree) == [8]
-
-def test_breadth_first_binarytree_with_letters():
-    tree = BinaryTree()
-    tree._root = _Node(8)
-    tree._root.left = _Node("a")
-    tree._root.right = _Node(-2)
-    assert BinaryTree.breadth_first(tree) == [8, "a", -2]
-    tree._root.left.left = _Node(195)
-    tree._root.left.right = _Node("cat")
-    tree._root.right.right = _Node(8)
-    tree._root.left.left.left = _Node(-0.56)
-    tree._root.left.left.right = _Node(9)
-    tree._root.right.right.right = _Node(23)
-    tree._root.right.right.right.left = _Node([5, 7])
-    assert BinaryTree.breadth_first(tree) == [8, "a", -2, 195,"cat", 8, -0.56, 9, 23, [5,7]]
 
 
