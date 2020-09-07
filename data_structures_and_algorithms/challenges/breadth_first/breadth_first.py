@@ -1,4 +1,4 @@
-from data_structures_and_algorithms.data_structures.tree.tree import _Node, Queue, BinaryTree
+from data_structures_and_algorithms.data_structures.tree.tree import _Node, BinaryTree
 
 def breadth_first_traversal(root): 
     '''
