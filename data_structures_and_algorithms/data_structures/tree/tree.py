@@ -118,6 +118,26 @@ class BinaryTree:
 
         return arr
 
+    def find_maximum_value(self, _root):
+        '''
+        it used to return the maximum value in the inputd tree:
+            out >>> the maximum value in the inputd tree
+        '''
+        if self._root == None:  
+            return float('-inf')
+
+        res = self._root.value 
+        left_res = self.find_maximum_value(self._root.left)  
+        right_res = self.find_maximum_value(self._root.right) 
+
+        if (left_res > res): 
+            res = left_res  
+
+        if (right_res > res):  
+            res = right_res  
+    
+        return res 
+
     
 class BinarySearchTree(BinaryTree):
     def add(self, value):
@@ -166,3 +186,4 @@ class BinarySearchTree(BinaryTree):
                 current = current.right
         return False
 
+    
