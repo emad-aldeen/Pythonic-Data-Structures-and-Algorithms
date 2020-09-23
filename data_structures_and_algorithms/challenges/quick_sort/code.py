@@ -28,7 +28,7 @@ def swap(arr, i, low):
     arr[i] = arr[low]
     arr[low] = temp
 
-
+ 
 
 # if __name__ == '__main__':
 #     lst = [8,4,23,42,16,15]
