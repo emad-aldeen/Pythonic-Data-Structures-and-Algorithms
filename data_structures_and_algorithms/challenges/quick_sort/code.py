@@ -30,7 +30,9 @@ def swap(arr, i, low):
 
  
 
+
+
 # if __name__ == '__main__':
-#     lst = [8,4,23,42,16,15]
-#     quicksort(lst, 0, 5)
+#     lst = [50,20,60,10,30,40]
+#     quicksort(lst, 0, len(lst)-1)
 #     print(lst)
