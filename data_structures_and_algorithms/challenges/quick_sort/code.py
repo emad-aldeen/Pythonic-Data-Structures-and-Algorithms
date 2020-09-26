@@ -32,7 +32,7 @@ def swap(arr, i, low):
 
 
 
-if __name__ == '__main__':
-    lst = [50,20,60,10,30,40]
-    quicksort(lst, 0, len(lst)-1)
-    print(lst)
+# if __name__ == '__main__':
+#     lst = [50,20,60,10,30,40]
+#     quicksort(lst, 0, len(lst)-1)
+#     print(lst)
