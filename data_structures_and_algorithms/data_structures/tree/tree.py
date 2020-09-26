@@ -10,6 +10,7 @@ class Queue:
     def __init__(self):
         self.front = None
         self.rear = None
+        self.length = 0
 
     def is_empty(self):
         """
@@ -25,6 +26,7 @@ class Queue:
         Method that takes any value as an argument and adds a new node with that value to the back of the queue:
             inp ---> value
         """
+        self.length += 1
         new_node = node
 
         if self.is_empty():
@@ -40,6 +42,7 @@ class Queue:
             out >> the dequeueed value
         """
         if not self.is_empty():
+            self.length -= 1
             temp = self.front
             self.front = self.front.next
             temp.next = None
@@ -138,7 +141,24 @@ class BinaryTree:
     
         return res 
 
+    def breadth_first_traversal(self):
+        '''
+        by level .. it prints evrey level of tree inside an array:
+            out >> the tree values sorted by each level by level..
+        '''
+        res = []
+        q = Queue()
+        q.enqueue(self._root)
+        while q.length > 0:
+            cur = q.dequeue()
+            res.append(cur.value)
+            if cur.left:
+                q.enqueue(cur.left)
+            if cur.right:
+                q.enqueue(cur.right)
+        return res
     
+
 class BinarySearchTree(BinaryTree):
     def add(self, value):
         """
@@ -187,3 +207,17 @@ class BinarySearchTree(BinaryTree):
         return False
 
     
+if __name__ == "__main__":
+    tree = BinarySearchTree()
+    tree.add(15)
+    tree.add(11)
+    tree.add(13)
+    tree.add(7)
+    tree.add(8)
+    tree.add(5)
+    tree.add(19)
+    tree.add(17)
+    tree.add(23)
+
+    # print(tree.breadth_first_traversal())
+    # print(tree.in_order())
