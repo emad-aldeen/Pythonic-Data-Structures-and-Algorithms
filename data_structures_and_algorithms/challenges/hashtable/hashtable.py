@@ -136,6 +136,14 @@ class hash_table():
             self.map[hashed_key].insert((key, value))
 
 
+    def get(self, key):
+        hashed_key = self.hash(key)
+
+        if self.map[hashed_key]:
+            return self.map[hashed_key].get(key)[1]
+        return 'there is no such key like!!'
+
+
     def __str__(self):
         res = ''
         for i in range(len(self.map)):
@@ -154,4 +162,6 @@ if __name__ == "__main__":
     test = hash_table(5)
     test.add('cat', 'hello_TAs')
     test.add('cat', 'glad to see you guys.. :)')
+    test.add('fatCat', 'how you doin...')
+    print(test.get('fatCat'))
     print(test)
