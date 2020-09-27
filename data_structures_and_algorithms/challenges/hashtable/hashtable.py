@@ -18,7 +18,7 @@ class LinkedList():
         self.head = None
     
 
-    def insert(self, value=None):
+    def insert(self, *value):
         '''
         insert new node to linked list:
             input ---> the vlaue you want to added to linked list
@@ -27,34 +27,36 @@ class LinkedList():
         if value is None:
             raise Exception('Please insert vlaue as argument')
         else:
-            new_node = Node(value)
+            for i in value:
+                new_node = Node(i)
 
-            if not self.head:
-                self.head = new_node
-            else:
-                current = self.head
-                while current.next:
-                    current = current.next
+                if not self.head:
+                    self.head = new_node
+                else:
+                    current = self.head
+                    while current.next:
+                        current = current.next
 
-                current.next = new_node
+                    current.next = new_node
 
 
-    def includes(self, value=None):
+    def find_and_replace(self, value, value2):
         '''
-        function designed to search in your linked list for the input value:
-            input ---> value you want to search for..
-            output >> boleen if your input exist in the ll
-            * none input will raise ValueError..
+        function designed to search in your linked list for the input value then replace it with the second value2:
+            input ---> value you want to be replaced..
+            input2 ---> value2 you want to replace with
+            * None any of inputs will raise ValueError..
         '''
-        if value is None:
-            raise Exception('Please insert vlaue as argument')
+        if value is None or value2 is None:
+            raise Exception('Please insert both values as argument!!')
         else:
             current = self.head
             while current:
-                if current.value == value:
-                    return True
+                if current.value[0] == value:
+                    current.value = value2
+                    return
                 current = current.next
-            return False
+
 
     def __str__(self):
         if self.head:
@@ -63,6 +65,8 @@ class LinkedList():
             while current:
                 res += f'{ {current.value} } >> '
                 current = current.next
+            else:
+                res = res[:-4]
         else:
             res = 'll is empty!!'
         return res
@@ -83,5 +87,30 @@ class hash_table():
 
         if self.map[hashed_key] == None:
             self.map[hashed_key] = LinkedList()
+        
+        if self.map[hashed_key].includes(key):
+            # self.map[hashed_key].insert(())
+            return 'yes! thats working..'
+        else:
+            self.map[hashed_key].insert((key, value))
+            return 'add succsful!!'
 
-        self.map[hashed_key].insert((key, value))
+    def __str__(self):
+        res = ''
+        for i in range(len(self.map)):
+            if self.map[i] != None:
+                res += f'in index: {i} : {self.map[i]} \n'
+        return res
+
+
+if __name__ == "__main__":
+    # ll = LinkedList()
+    # ll.insert((123, 'hi'), (456, 'not_hi'))
+    # print(ll)
+    # print(ll.includes(123))
+    # print((123, 'hi')[0])
+
+    test = hash_table(5)
+    test.add('cat', 'hello')
+    test.add('cat', 'not hello')
+    print(test)
