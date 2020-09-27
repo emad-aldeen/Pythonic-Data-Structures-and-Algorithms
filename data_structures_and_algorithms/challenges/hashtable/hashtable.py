@@ -40,12 +40,32 @@ class LinkedList():
                     current.next = new_node
 
 
+    def includes(self, value):
+        '''
+        function designed to search in your linked list for the input value:
+            input ---> value you want to search for..
+            output >> boleen if your input exist in the ll
+            ** this function only to handle tuples of tow elemnts
+            * none input will raise ValueError..
+        '''
+        if value is None:
+            raise Exception('Please insert value as argument!!')
+        else:
+            current = self.head
+            while current:
+                if current.value[0] == value:
+                    return True
+                current = current.next
+            return False
+
+
     def find_and_replace(self, value, value2):
         '''
         function designed to search in your linked list for the input value then replace it with the second value2:
             input ---> value you want to be replaced..
             input2 ---> value2 you want to replace with
-            * None any of inputs will raise ValueError..
+            * this function only to handle tuples of tow elemnts
+            ** None any of inputs will raise ValueError..
         '''
         if value is None or value2 is None:
             raise Exception('Please insert both values as argument!!')
@@ -55,6 +75,24 @@ class LinkedList():
                 if current.value[0] == value:
                     current.value = value2
                     return
+                current = current.next
+
+
+    def get(self, value):
+        '''
+        function designed to search in your linked list for the input value then return it:
+            input ---> value you want to search for..
+            output >> tuple contains the value you want
+            * this function only to handle tuples of tow elemnts
+            ** None input will raise ValueError..
+        '''
+        if value is None:
+            raise Exception('Please insert value as argument!')
+        else:
+            current = self.head
+            while current:
+                if current.value[0] == value:
+                    return current.value
                 current = current.next
 
 
@@ -70,6 +108,8 @@ class LinkedList():
         else:
             res = 'll is empty!!'
         return res
+
+
 
 class hash_table():
     def __init__(self, size):
@@ -89,11 +129,12 @@ class hash_table():
             self.map[hashed_key] = LinkedList()
         
         if self.map[hashed_key].includes(key):
-            # self.map[hashed_key].insert(())
-            return 'yes! thats working..'
+        # for dublicate:
+            # add to linked list class function to find & replace
+            self.map[hashed_key].find_and_replace(key, (key, value))
         else:
             self.map[hashed_key].insert((key, value))
-            return 'add succsful!!'
+
 
     def __str__(self):
         res = ''
@@ -111,6 +152,6 @@ if __name__ == "__main__":
     # print((123, 'hi')[0])
 
     test = hash_table(5)
-    test.add('cat', 'hello')
-    test.add('cat', 'not hello')
+    test.add('cat', 'hello_TAs')
+    test.add('cat', 'glad to see you guys.. :)')
     print(test)
