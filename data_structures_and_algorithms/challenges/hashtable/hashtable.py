@@ -101,7 +101,7 @@ class LinkedList():
             res = ''
             current = self.head
             while current:
-                res += f'{ {current.value} } >> '
+                res += f'{current.value} >> '
                 current = current.next
             else:
                 res = res[:-4]
@@ -111,18 +111,46 @@ class LinkedList():
 
 
 
-class hash_table():
+class Hash_table():
+    '''
+    using the famous encrypt data way (the hashing):
+        inp ---> it only needs the hash table size to create one..
+        
+        class contains:
+            hash: return any inputied key as hashed key
+            add: to add the inserted key,value to the hash table
+            get: return the value of the inputed key from hash table
+            contains: return boolean if the inputed key is already in the hash table
+    
+    * the class is supported with __str__ methoud to print the hash table
+    '''
     def __init__(self, size):
         self.map = [None] * size
         self.size = size
-    
+
+
     def hash(self, key):
+        '''
+        it hashing any inputed key with hash method:
+            inp ---> key as int or string
+            out >>> the key hashed only in range the hash table size key
+        '''
         hashed_total = 0
         for char in key:
             hashed_total += ord(char)
         return hashed_total*77 % self.size
 
+
     def add(self, key, value):
+        '''
+        it used to add your kay and vlaue to the hash table:
+            inp ---> key to be saved with own value in tuple
+            inp2 ---> value to be saved with own key in tuple
+
+        *** function solve any collision with linked linked list data strusture
+        ** used linked list are modfied with functions to handlle only tuples in hash table
+        * dont try this on your home!
+        '''
         hashed_key = self.hash(key)
 
         if self.map[hashed_key] == None:
@@ -137,31 +165,59 @@ class hash_table():
 
 
     def get(self, key):
+        '''
+        it used to get you the value of your inputed key if it exist in the hash table:
+            inp ---> key that will search for
+            out ---> the value of your inputed key
+        
+        ** since collision solved by linked list so the used linked list are modfied with functions to handlle only tuples in hash table
+        * if key is not exist in the hash table it will return 'null'
+        '''
         hashed_key = self.hash(key)
 
         if self.map[hashed_key]:
             return self.map[hashed_key].get(key)[1]
-        return 'there is no such key like!!'
+        return 'null'
+
+
+    def contains(self, key):
+        '''
+        your not sure if your key is exist on hash table? this fuction will check and return boolean:
+            inp ---> key to be search for
+            out >>> boolean if key exist or not
+
+        * since collision solved by linked list so the used linked list are modfied with functions to handlle only tuples in hash table
+        '''
+        hashed_key = self.hash(key)
+
+        if self.map[hashed_key]:
+            return self.map[hashed_key].includes(key)
+        return False
 
 
     def __str__(self):
         res = ''
+        if self.map.count(None) == len(self.map):
+            return 'hash table is empty!!'
         for i in range(len(self.map)):
             if self.map[i] != None:
                 res += f'in index: {i} : {self.map[i]} \n'
         return res
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # ll = LinkedList()
     # ll.insert((123, 'hi'), (456, 'not_hi'))
     # print(ll)
     # print(ll.includes(123))
     # print((123, 'hi')[0])
 
-    test = hash_table(5)
-    test.add('cat', 'hello_TAs')
-    test.add('cat', 'glad to see you guys.. :)')
-    test.add('fatCat', 'how you doin...')
-    print(test.get('fatCat'))
-    print(test)
+    # test = hash_table(5)
+    # test.add('cat', 'hello_TAs')
+    # test.add('cat', 'glad to see you guys.. :)')
+    # test.add('fatCat', 'how you doin...')
+    # test.add('ftaCta', "joy doesn't share food!")
+    # print(test.get('fatCat'))
+    # print(test.contains('fatCat'))
+    # print(test.contains('notFatCat'))
+    # print(test)
