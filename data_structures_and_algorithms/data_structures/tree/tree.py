@@ -1,4 +1,4 @@
-class _Node:
+class Node:
     def __init__(self, value):
         self.value = value
         self.left = None
@@ -62,7 +62,7 @@ class Queue:
 
 class BinaryTree:
     def __init__(self):
-        self._root = None
+        self.root = None
 
     def pre_order(self, node=None, arr = None):
         """
@@ -72,7 +72,7 @@ class BinaryTree:
         if arr is None:
             arr = []
 
-        node = node or self._root
+        node = node or self.root
 
         arr.append(node.value)
 
@@ -92,7 +92,7 @@ class BinaryTree:
         if arr is None:
             arr = []
 
-        node = node or self._root
+        node = node or self.root
 
         if node.left:
             self.in_order(node.left, arr)
@@ -109,7 +109,7 @@ class BinaryTree:
         Method to return an array of tree values "post-order":
             out >> list of tree values in post-order..
         """
-        node = node or self._root
+        node = node or self.root
 
         if node.left:
             self.post_order(node.left, arr)
@@ -121,17 +121,17 @@ class BinaryTree:
 
         return arr
 
-    def find_maximum_value(self, _root):
+    def find_maximum_value(self, root):
         '''
         it used to return the maximum value in the inputd tree:
             out >>> the maximum value in the inputd tree
         '''
-        if self._root == None:  
+        if self.root == None:  
             return float('-inf')
 
-        res = self._root.value 
-        left_res = self.find_maximum_value(self._root.left)  
-        right_res = self.find_maximum_value(self._root.right) 
+        res = self.root.value 
+        left_res = self.find_maximum_value(self.root.left)  
+        right_res = self.find_maximum_value(self.root.right) 
 
         if (left_res > res): 
             res = left_res  
@@ -148,7 +148,7 @@ class BinaryTree:
         '''
         res = []
         q = Queue()
-        q.enqueue(self._root)
+        q.enqueue(self.root)
         while q.length > 0:
             cur = q.dequeue()
             res.append(cur.value)
@@ -165,12 +165,12 @@ class BinarySearchTree(BinaryTree):
         Method that accepts a value, and adds a new node with that value in the correct location in the binary search tree:
             inp ---> value to be added to binry search tree
         """
-        node = _Node(value)
-        if not self._root:
-            self._root = node
+        node = Node(value)
+        if not self.root:
+            self.root = node
             return
 
-        current = self._root
+        current = self.root
         while True:
             if node.value < current.value:
                 if current.left:
@@ -193,10 +193,10 @@ class BinarySearchTree(BinaryTree):
             inp ---> value to cheack if it is in the tree
             out >> boolean if the value in or not..
         """
-        if self._root == None:
+        if self.root == None:
             raise "Tree is empty"
 
-        current = self._root
+        current = self.root
         while current:
             if current.value == value:
                 return True
