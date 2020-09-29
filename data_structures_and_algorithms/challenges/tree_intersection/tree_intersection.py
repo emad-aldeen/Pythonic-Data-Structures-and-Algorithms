@@ -1,4 +1,4 @@
-from data_structures_and_algorithms.data_structures.tree.tree import BinarySearchTree, BinaryTree, _Node
+from data_structures_and_algorithms.data_structures.tree.tree import BinarySearchTree, BinaryTree, Node
 
 def tree_intersection(tree1, tree2, res=[]):
     '''
