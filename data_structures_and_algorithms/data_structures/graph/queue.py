@@ -10,6 +10,9 @@ class Queue():
     def dequeue(self):
         return self.dq.pop()
 
+    def __len__(self):
+        return len(self.dq)
+
 class Node:
     def __init__(self, value):
         self.value = value
