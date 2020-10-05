@@ -7,7 +7,8 @@ class Graph:
         * [method] - add_edge: adds new edge between two virtices, takes in two verticies, has ability to add weight
         * [method] - get_neighbors: returns a collection of vertices (with weights) connected to a vertex, takes in a vertex
         * [method] - get_nodes: returns the value from a given vertex
-        * [method] - size() - returns number of vertices in Graph; integer
+        * [method] - size: returns number of vertices in Graph; integer
+        * [method] - breadth_first: traverses the graph starting from the given vertex, returns a list of nodes visited during traversal
     '''
     def __init__(self):
         self.adjacency_list = {}
@@ -60,5 +61,30 @@ class Graph:
             out >>> integer representing the graph size
         """
         return len(self.adjacency_list)
+
+    def breadth_first(self, start_node):
+        """
+        Method to do breadth-first traversal on a graph:
+            inp ---> node you want to start traversing from
+            out >>> list contain all graph nodes value
+        """
+        output = []
+        q = Queue()
+        q.enqueue(start_node)
+
+        while len(q):
+            cur = q.dequeue()
+            output.append(cur)
+
+            neighbors = self.adjacency_list[cur]
+            for n in neighbors:
+                if not n[0].visited:
+                    n[0].visited = True
+                q.enqueue(n[0])
+
+        for node in self.adjacency_list:
+            node.visited = False
+        
+        return output
 
 

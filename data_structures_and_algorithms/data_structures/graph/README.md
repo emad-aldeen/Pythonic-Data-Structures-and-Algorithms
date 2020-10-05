@@ -21,6 +21,8 @@ Implement the graph, which should be represented as an adjacency list, and shoul
 
 * size() time Big O(1), space Big O(1)
 
+* breadth_first(): traverses the graph starting from the given vertex, returns a list of nodes visited during traversal
+
 <br>
 <hr>
 
@@ -50,3 +52,7 @@ Implement the graph, which should be represented as an adjacency list, and shoul
 5. size():
 
     * Returns the total number of nodes in the graph
+
+6. breadth_first():
+
+    * Returns a list of nodes visited during traversal

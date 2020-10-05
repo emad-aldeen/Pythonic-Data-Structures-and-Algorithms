@@ -1,35 +1,20 @@
-def BinarySearch(list,num):
-  testLength = 0
+def binary_search(lst, value):
+      left_index = 0
+      right_index = (len(lst)-1)
 
-  while True:
-      try:
-          list[testLength]
-      except IndexError:
-          break
-      else:
-          testLength += 1
-          continue
-  lenOflist = testLength
-  indexOflist=lenOflist-1
-  mid = lenOflist // 2
-  if lenOflist == 0:
-    return "the listt is empty"
-  else:
-
-    while list[mid] != num:
-      if num > list[indexOflist]:
-        return -1
-      else:
-        if num == list[mid]:
-          return mid
-        else:
-          if num < list[mid]:
-            mid = mid // 2
-          elif num > list[mid]:
-            mid =indexOflist-mid
-  return mid
+      while left_index <= right_index:
+          middle = left_index + (right_index) + 1 // 2
+      
+          if value == lst[middle]:
+              return middle
+          elif value < lst[middle]:
+              right_index = middle - 1
+          else:
+              left_index = middle + 1
+      
+      return -1
 
 
-if __name__=="__main__":
-    print(BinarySearch([4,8,15,16,23,42], 15))
-    print(BinarySearch([1,2,3,4,5,6,7], 8))
+# if __name__=="__main__":
+#     print(binary_search([4,8,15,16,23,42], 44))
+    # print(binarySearch([1,2,3,4,5,6,7], 8))
