@@ -16,7 +16,7 @@ class Queue():
 class Node:
     def __init__(self, value):
         self.value = value
-
+        self.visited = False
     # def __str__(self):
     #     return self.value
 
