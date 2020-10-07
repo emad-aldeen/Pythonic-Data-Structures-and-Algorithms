@@ -1,4 +1,4 @@
-from data_structures_and_algorithms.data_structures.tree.tree import BinaryTree, _Node
+from data_structures_and_algorithms.data_structures.tree.tree import BinaryTree, Node
 
 
 def fizz_buzz(value):
@@ -32,7 +32,7 @@ def fizz_buzz_tree(tree):
             """
             Helper function to use in recurtion to add new values in the new_tree according to their positions in the original tree
             """
-            node = _Node(fizz_buzz(current.value))
+            node = Node(fizz_buzz(current.value))
             if current.left:
                 node.left = helper(current.left)
             if current.right:
