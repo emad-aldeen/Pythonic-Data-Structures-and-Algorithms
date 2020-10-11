@@ -174,3 +174,23 @@ def test_false_get_edges():
     expected = (False, '$0')
 
     assert actual == expected
+
+def test_depth_first():
+    graph = Graph()
+
+    a = graph.add_node('a')
+    b = graph.add_node('b')
+    c = graph.add_node('c')
+    d = graph.add_node('d')
+    e = graph.add_node('e')
+    f = graph.add_node('f')
+
+    graph.add_edge(a, b)
+    graph.add_edge(a, c)
+    graph.add_edge(a, d)
+    graph.add_edge(c, e)
+    graph.add_edge(e, f)
+
+    vertices_lst = graph.depth_first(a)
+
+    assert vertices_lst == [a.value, b.value, c.value, e.value, f.value, d.value]
